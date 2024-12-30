@@ -10,7 +10,7 @@ const app = express();
 // app.use(cors());
 app.use(
   cors({
-    origin: "https://workwise-e4nq-4eof84385-1sanchit1s-projects.vercel.app",
+    origin: "https://workwise-e4nq.vercel.app",
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     allowedHeaders: "Content-Type,Authorization",
   })
