@@ -18,7 +18,11 @@ sequelize
   })
   .catch((err) => console.error("Database connection failed:", err));
 
-app.use("/api", Routes);
+app.use("/", Routes);
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 app.get("/", (req, res) => {
   res.send("Server is running!");
 });
