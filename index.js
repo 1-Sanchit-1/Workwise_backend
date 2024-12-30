@@ -19,6 +19,9 @@ sequelize
   .catch((err) => console.error("Database connection failed:", err));
 
 app.use("/api", Routes);
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server running on port ${port}`));
