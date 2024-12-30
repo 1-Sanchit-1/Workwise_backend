@@ -7,7 +7,14 @@ const cors = require("cors");
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: "https://workwise-e4nq-4eof84385-1sanchit1s-projects.vercel.app",
+    methods: "GET,POST,PUT,DELETE,OPTIONS",
+    allowedHeaders: "Content-Type,Authorization",
+  })
+);
 app.use(express.json());
 
 sequelize
