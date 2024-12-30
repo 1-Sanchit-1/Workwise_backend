@@ -1,7 +1,7 @@
 const express = require("express");
 const sequelize = require("./config/db");
 const dotenv = require("dotenv");
-const seatsRoutes = require("../Backend/routers/routes");
+const Routes = require("../Backend/routers/routes");
 const cors = require("cors");
 
 dotenv.config();
@@ -27,7 +27,7 @@ sequelize
   })
   .catch((err) => console.error("Database connection failed:", err));
 
-app.use("/api", seatsRoutes);
+app.use("/api", Routes);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server running on port ${port}`));
