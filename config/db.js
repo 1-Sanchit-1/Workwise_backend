@@ -15,21 +15,17 @@
 // module.exports = sequelize;
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
-const { parse } = require("pg-connection-string");
 
-// Parse the DATABASE_URL provided by Vercel
-const config = parse(process.env.DATABASE_URL);
-
-const sequelize = new Sequelize(config.database, config.user, config.password, {
-  host: config.host,
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
-  logging: false,
+  protocol: "postgres",
   dialectOptions: {
     ssl: {
-      require: true, // Ensure SSL is used
-      rejectUnauthorized: false, // Disable certificate verification
+      require: true,
+      rejectUnauthorized: false,
     },
   },
+  logging: false, // Set true if you want SQL query logs
 });
 
 module.exports = sequelize;

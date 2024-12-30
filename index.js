@@ -30,9 +30,15 @@ sequelize
         console.error("Error synchronizing the database:", error);
       }
     })();
-    // sequelize.sync(); // Ensure database tables are created
   })
-  .catch((err) => console.error("Database connection failed:", err));
+  .catch((err) => {
+    console.error("Database connection failed:", err);
+  });
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
+});
 
 app.use("/api", Routes);
 
